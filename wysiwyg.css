@@ -1,13 +1,48 @@
 body {
 	background-color: #3D9970;
+
 }
 img {
 	max-width: 300px;
+	max-height: 250px;
+}
+
+#page-header {
+	flex: 1 100%;
+	text-align: center;
+}
+
+#directions {
+	text-align: center;
+}
+
+#famous {
+	display: flex;
+	flex-wrap: wrap;
+
+
 }
 
 .person_container:nth-child(even) {
-	font: white;
+	background-color: lightyellow;
 }
 .person_container:nth-child(odd) {
-	font: blue;
+	background-color: lightblue;
 }
+
+.famous-header {
+	font-weight: bold;
+	text-align: center;
+}
+
+.border {
+	border: dotted 2px magenta;
+}
+
+.person_container {
+	width: 15%;
+	height: 500px;
+	padding: 40px;
+
+}
+

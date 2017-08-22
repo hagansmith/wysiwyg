@@ -84,15 +84,17 @@ var famousPeople = [
 
 var counter = 0;
 var output = document.getElementById("famous");
+var input = document.getElementById("bio-input")
 
 for (var counter = 0; counter < famousPeople.length; counter++) {
   // Give each person element a unique identifier
-  output.innerHTML += `<div class="person_container" id="person-${counter}">`;
-  output.innerHTML +=	`<header>${famousPeople[counter].name}, ${famousPeople[counter].title}</header>`;
-	output.innerHTML += `<section>${famousPeople[counter].bio}, <img src="${famousPeople[counter].image}"</section>`;
-	output.innerHTML += `<footer>${famousPeople[counter].lifespan.birth}, ${famousPeople[counter].lifespan.death}</footer>`;
-  output.innerHTML += `</div>`
-  console.log(output);
+  var string = "";
+  string += `<div class="person_container" id="person-${counter}">`;
+  string +=		`<header class="famous-header">${famousPeople[counter].name}, ${famousPeople[counter].title}</header>`;
+	string += 	`<section>${famousPeople[counter].bio}, <img src="${famousPeople[counter].image}"</section>`;
+	string += 	`<footer>${famousPeople[counter].lifespan.birth}, ${famousPeople[counter].lifespan.death}</footer>`;
+  string += `</div>`;
+  output.innerHTML += string;
 }
 
 // Now containerEl will have elements in it
@@ -101,11 +103,27 @@ var containerEl = document.getElementsByClassName("person_container");
 
 // Event listeners are created
 for (var i = 0; i < containerEl.length; i++) {
-  containerEl[i].addEventListener("click", function (event) {
-    
-   
-    // console.log('you clicked ' + target.id);
+  var personId = (`person-${i}`);
+  document.getElementById(personId).addEventListener("click", border);     
+  };
 
-  });
- }
+function border(e) {
+	console.log(e);
+	e.target.parentElement.classList.toggle('border');
+
+	var text = document.getElementById('bio-input');
+	text.focus();
+	text.addEventListener('keydown', function(e){
+		if (e.keyCode === 13) {text.value = '';}	
+	})
+	
+	text.addEventListener("keyup", function(){
+	e.target.childNodes['0'].data = `${text.value}`;
+	});
+}
+
+
+
+
+
 
