@@ -1,0 +1,13 @@
+body {
+	background-color: #3D9970;
+}
+img {
+	max-width: 300px;
+}
+
+.person_container:nth-child(even) {
+	font: white;
+}
+.person_container:nth-child(odd) {
+	font: blue;
+}
