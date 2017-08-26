@@ -1,9 +1,9 @@
 body {
 	background-color: #3D9970;
-
 }
+
 img {
-	max-width: 300px;
+	width: 100%;
 	max-height: 250px;
 }
 
@@ -19,13 +19,21 @@ img {
 #famous {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+}
 
-
+#bio-input {
+	display: flex;
+	margin: auto;
+	margin-bottom: 12px;
+	height: 24px;
+	width: 75%	;
 }
 
 .person_container:nth-child(even) {
 	background-color: lightyellow;
 }
+
 .person_container:nth-child(odd) {
 	background-color: lightblue;
 }
@@ -33,16 +41,20 @@ img {
 .famous-header {
 	font-weight: bold;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 .border {
 	border: dotted 2px magenta;
 }
 
-.person_container {
-	width: 15%;
-	height: 500px;
+.person_container {	
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	width: 300px;
+	height: 600px;
 	padding: 40px;
-
+	margin-top: 20px;
+	justify-content: center;
 }
 

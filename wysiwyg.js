@@ -84,18 +84,23 @@ var famousPeople = [
 
 var counter = 0;
 var output = document.getElementById("famous");
-var input = document.getElementById("bio-input")
+var input = document.getElementById("bio-input");
 
 for (var counter = 0; counter < famousPeople.length; counter++) {
   // Give each person element a unique identifier
   var string = "";
   string += `<div class="person_container" id="person-${counter}">`;
-  string +=		`<header class="famous-header">${famousPeople[counter].name}, ${famousPeople[counter].title}</header>`;
-	string += 	`<section>${famousPeople[counter].bio}, <img src="${famousPeople[counter].image}"</section>`;
-	string += 	`<footer>${famousPeople[counter].lifespan.birth}, ${famousPeople[counter].lifespan.death}</footer>`;
+  string +=		`<header class="famous-header child">${famousPeople[counter].name}	 <br> ${famousPeople[counter].title}</header>`;
+	string += 	`<section class = "child"><p>${famousPeople[counter].bio}</p></section>`;
+	string +=		`<img class ="child" src="${famousPeople[counter].image}"`
+	 if (`${famousPeople[counter].lifespan.death}` === '') {
+  string += 	`<footer class = "child"><p>${famousPeople[counter].lifespan.birth}</footer></p>`;
+  }else {
+	string += 	`<footer class = "child"><p>${famousPeople[counter].lifespan.birth} - ${famousPeople[counter].lifespan.death}</footer></p>`;
+	}
   string += `</div>`;
   output.innerHTML += string;
-}
+	}
 
 // Now containerEl will have elements in it
 var containerEl = document.getElementsByClassName("person_container");
@@ -107,21 +112,30 @@ for (var i = 0; i < containerEl.length; i++) {
   document.getElementById(personId).addEventListener("click", border);     
   };
 
+// Add border to selected card element and toggle a border
+var selectedCard;
 function border(e) {
-	console.log(e);
-	e.target.parentElement.classList.toggle('border');
+	// console.log(e);
+  if (event.target.classList.contains('child')){
+    selectedCard = event.target.parentNode;
+  } else if (event.target.parentNode.parentNode.classList.contains('person_container')) {
+    selectedCard = event.target.parentNode.parentNode;
+  } else if (event.target.classList.contains('person_container')) {
+    selectedCard = event.target;
+  }
+ selectedCard.classList.toggle('border');
 
-	var text = document.getElementById('bio-input');
-	text.focus();
-	text.addEventListener('keydown', function(e){
-		if (e.keyCode === 13) {text.value = '';}	
+// Focus on the input field and enter key event listen to clear field
+	input.focus();
+	input.addEventListener('keydown', function(e){
+		if (e.keyCode === 13) {input.value = '';}	
 	})
-	
-	text.addEventListener("keyup", function(){
-	e.target.childNodes['0'].data = `${text.value}`;
+
+// Add event listener to text input and change the content of the bio to mirror input
+	input.addEventListener("keyup", function(event){
+		selectedCard.childNodes[1].innerHTML = `${input.value}`;
 	});
 }
-
 
 
 
