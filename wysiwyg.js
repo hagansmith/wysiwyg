@@ -16,7 +16,7 @@ var famousPeople = [
   image: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Donald_Trump_Pentagon_2017.jpg",
   lifespan: {
     birth: 1946,
-    death: '', 
+    death: '',
   }
 },
 {
@@ -100,22 +100,20 @@ for (var counter = 0; counter < famousPeople.length; counter++) {
 	}
   string += `</div>`;
   output.innerHTML += string;
-	}
+}
 
 // Now containerEl will have elements in it
 var containerEl = document.getElementsByClassName("person_container");
-// console.log(containerEl);
 
 // Event listeners are created
 for (var i = 0; i < containerEl.length; i++) {
   var personId = (`person-${i}`);
-  document.getElementById(personId).addEventListener("click", border);     
+  document.getElementById(personId).addEventListener("click", border);
   };
 
 // Add border to selected card element and toggle a border
 var selectedCard;
 function border(e) {
-	// console.log(e);
   if (event.target.classList.contains('child')){
     selectedCard = event.target.parentNode;
   } else if (event.target.parentNode.parentNode.classList.contains('person_container')) {
@@ -128,7 +126,7 @@ function border(e) {
 // Focus on the input field and enter key event listen to clear field
 	input.focus();
 	input.addEventListener('keydown', function(e){
-		if (e.keyCode === 13) {input.value = '';}	
+		if (e.keyCode === 13) {input.value = '';}
 	})
 
 // Add event listener to text input and change the content of the bio to mirror input
@@ -136,8 +134,3 @@ function border(e) {
 		selectedCard.childNodes[1].innerHTML = `${input.value}`;
 	});
 }
-
-
-
-
-
